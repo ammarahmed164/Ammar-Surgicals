@@ -10,29 +10,29 @@ import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function CheckoutPage() {
-  const { clearCart, totalItems, cartItems } = useCart();
+  const { clearCart, cartItems } = useCart();
   const router = useRouter();
   
-  // A copy of cartItems is made before it's cleared.
+  // Make a copy of cartItems before it's cleared to display on this page.
   const finalCartItems = [...cartItems];
 
   useEffect(() => {
-    // Redirect to home if the cart was already empty when the page loads.
-    // This prevents direct access to the page without items.
-    if (finalCartItems.length === 0) {
+    // Only clear the cart if there were items in it when the page loaded.
+    if (finalCartItems.length > 0) {
+      clearCart();
+    } else {
+      // If the cart was already empty, redirect to the homepage.
+      // This prevents direct access to the thank you page.
       router.push('/');
-      return;
     }
     
-    // Clear the cart once the checkout page is displayed.
-    clearCart();
-
-    // The empty dependency array `[]` ensures this effect runs only once when the component mounts.
+    // The empty dependency array `[]` ensures this effect runs only once.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // If the user somehow navigated here with an empty cart,
+  // render nothing while we redirect them.
   if (finalCartItems.length === 0) {
-      // Render nothing or a loading state while redirecting
       return null;
   }
 
