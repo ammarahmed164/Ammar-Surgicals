@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -17,8 +18,9 @@ export default function Home() {
         {/* HERO */}
         <section className="relative w-full h-screen flex items-center justify-center text-center">
           <Image
-            src="/Home.png"
-            alt="Operating room"
+            src="https://picsum.photos/seed/surgery/1920/1080"
+            alt="Modern operating room with advanced surgical equipment"
+            data-ai-hint="operating room"
             fill
             priority
             className="object-cover"
