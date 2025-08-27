@@ -13,6 +13,7 @@ import {
   Mail,
   HelpCircle,
   LogOut,
+  ShoppingCart
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -29,6 +30,8 @@ import {
 } from "./ui/dropdown-menu";
 import { useUser } from "@/context/user-context";
 import { Avatar, AvatarFallback } from "./ui/avatar";
+import { useCart } from "@/context/cart-context";
+import { Badge } from "./ui/badge";
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
@@ -43,6 +46,7 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { user, logout } = useUser();
+  const { totalItems } = useCart();
 
   const handleSignOut = () => {
     logout();
@@ -116,7 +120,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center justify-end gap-4 ml-auto">
+        <div className="flex items-center justify-end gap-2 ml-auto">
           <div className="relative hidden sm:block">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -125,6 +129,15 @@ export default function Header() {
               className="pl-8 sm:w-[200px] md:w-[250px]"
             />
           </div>
+          <Button asChild variant="ghost" size="icon" className="relative">
+            <Link href="/cart">
+              <ShoppingCart className="h-5 w-5" />
+               {totalItems > 0 && (
+                <Badge variant="destructive" className="absolute -top-2 -right-2 h-5 w-5 justify-center p-0">{totalItems}</Badge>
+              )}
+              <span className="sr-only">Shopping Cart</span>
+            </Link>
+          </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">

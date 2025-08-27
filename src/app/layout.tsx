@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 import { UserProvider } from "@/context/user-context";
+import { CartProvider } from "@/context/cart-context";
 
 const ptSans = PT_Sans({
   subsets: ["latin"],
@@ -49,12 +50,14 @@ export default function RootLayout({
         )}
       >
         <UserProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
+          <CartProvider>
+            <div className="relative flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+            <Toaster />
+          </CartProvider>
         </UserProvider>
       </body>
     </html>

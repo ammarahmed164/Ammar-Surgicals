@@ -9,3 +9,7 @@ export interface Product {
   category: string;
   aiHint: string;
 }
+
+export interface CartItem extends Product {
+  quantity: number;
+}

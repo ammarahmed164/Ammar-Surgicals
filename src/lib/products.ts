@@ -144,7 +144,7 @@ const products: Product[] = [
     name: 'Adson Tissue Forceps',
     description: 'Fine-tipped forceps for grasping delicate tissues. The 1x2 teeth design provides a secure grip with minimal tissue trauma.',
     images: [
-      '/AdsonForceps.png',
+      '/TissueForceps.png',
     ],
     price: 35.00,
     specifications: {
@@ -161,7 +161,7 @@ const products: Product[] = [
     name: 'Mayo-Hegar Needle Holder',
     description: 'A heavy-pattern needle holder with a secure ratchet lock. The tungsten carbide jaws provide a durable, non-slip grip on needles.',
     images: [
-      '/NeedleHolder.png',
+      '/Holder.png',
     ],
     price: 95.00,
     specifications: {
@@ -178,7 +178,7 @@ const products: Product[] = [
     name: 'Yankauer Suction Tube',
     description: 'Standard suction instrument for clearing surgical sites of fluids. The bulbous tip is designed to minimize tissue damage.',
     images: [
-      '/YankauerTube.png',
+      '/SuctionTube.png',
     ],
     price: 25.00,
     specifications: {
@@ -195,7 +195,7 @@ const products: Product[] = [
     name: 'Electrosurgical Unit (ESU)',
     description: 'Advanced ESU for cutting, coagulating, and desiccating tissue with high-frequency electrical currents. Features multiple modes for procedural flexibility.',
     images: [
-      '/ESU.png',
+      '/Electrosurgical.png',
     ],
     price: 7500.00,
     specifications: {
@@ -212,7 +212,7 @@ const products: Product[] = [
     name: 'LED Surgical Headlight',
     description: 'Bright, shadowless LED headlight for superior illumination of the surgical field. Lightweight design with an adjustable headband for comfort.',
     images: [
-      '/SurgicalHeadlight.png',
+      '/Led.png',
     ],
     price: 1200.00,
     specifications: {
@@ -229,7 +229,7 @@ const products: Product[] = [
     name: 'Skin Stapler & Remover Kit',
     description: 'A convenient kit containing a sterile, single-use skin stapler and a stainless steel staple remover. For rapid wound closure.',
     images: [
-      '/SkinStapler.png',
+      '/Skin.png',
     ],
     price: 150.00,
     specifications: {

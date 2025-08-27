@@ -3,7 +3,7 @@
 
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getProductById, getProducts } from "@/lib/products";
+import { getProductById } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -18,6 +18,8 @@ import { Separator } from "@/components/ui/separator";
 import { useEffect } from "react";
 import { useViewingHistory } from "@/hooks/use-viewing-history";
 import ProductRecommendations from "@/components/ProductRecommendations";
+import { useCart } from "@/context/cart-context";
+import { useToast } from "@/hooks/use-toast";
 
 type ProductPageProps = {
   params: {
@@ -28,6 +30,8 @@ type ProductPageProps = {
 export default function ProductPage({ params }: ProductPageProps) {
   const product = getProductById(params.id);
   const { addProductToHistory, getViewingHistory } = useViewingHistory();
+  const { addItem } = useCart();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (product) {
@@ -38,6 +42,16 @@ export default function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     notFound();
   }
+
+  const handleAddToCart = () => {
+    if (product) {
+      addItem(product);
+      toast({
+        title: "Added to Cart",
+        description: `${product.name} has been added to your cart.`,
+      });
+    }
+  };
   
   const viewingHistory = getViewingHistory();
 
@@ -77,7 +91,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </p>
           </div>
           <p className="text-muted-foreground text-lg">{product.description}</p>
-          <Button size="lg" className="w-full md:w-auto">Add to Cart</Button>
+          <Button size="lg" className="w-full md:w-auto" onClick={handleAddToCart}>Add to Cart</Button>
           <Separator />
           
           <Card>
