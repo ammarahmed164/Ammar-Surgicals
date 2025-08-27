@@ -7,9 +7,9 @@ const products: Product[] = [
     name: 'Precision Scalpel Series',
     description: 'An ultra-sharp, single-use scalpel designed for maximum precision and control in delicate surgical procedures. The ergonomic handle ensures a comfortable and secure grip.',
     images: [
-      'https://picsum.photos/seed/surgical_scalpel_1/800/800',
-      'https://picsum.photos/seed/surgical_scalpel_2/800/800',
-      'https://picsum.photos/seed/surgical_scalpel_3/800/800',
+      'https://picsum.photos/seed/surgical_instrument_tray_1/800/800',
+      'https://picsum.photos/seed/surgical_instrument_tray_2/800/800',
+      'https://picsum.photos/seed/surgical_instrument_tray_3/800/800',
     ],
     price: 15.99,
     specifications: {
@@ -19,7 +19,7 @@ const products: Product[] = [
       'Packaging': 'Individually wrapped',
     },
     category: 'Cutting & Dissecting',
-    aiHint: 'surgical scalpel',
+    aiHint: 'surgical instruments tray',
   },
   {
     id: 'prod_002',
