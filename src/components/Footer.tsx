@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import { Stethoscope, Linkedin, Twitter } from "lucide-react";
+import { Stethoscope, Linkedin, Github, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 
 export default function Footer() {
@@ -38,7 +38,10 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" asChild>
-                <Link href="#"><Twitter className="h-5 w-5" /></Link>
+                <Link href="#"><Github className="h-5 w-5" /></Link>
+              </Button>
+               <Button variant="ghost" size="icon" asChild>
+                <Link href="#"><Instagram className="h-5 w-5" /></Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
                 <Link href="#"><Linkedin className="h-5 w-5" /></Link>
