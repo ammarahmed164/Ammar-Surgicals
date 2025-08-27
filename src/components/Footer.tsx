@@ -6,7 +6,7 @@ import { Separator } from "./ui/separator";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-gray-100 to-white dark:from-gray-800 border-t">
+    <footer className="bg-gradient-to-t from-blue-50 to-white dark:from-blue-950 dark:to-background border-t">
       <div className="container mx-auto px-4 py-8 md:px-6">
         <div className="grid gap-8 text-center md:text-left md:grid-cols-12 mb-8">
           
