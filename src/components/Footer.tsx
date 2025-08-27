@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-primary to-blue-900 text-primary-foreground">
+    <footer className="bg-gradient-to-t from-zinc-900 to-zinc-800 text-primary-foreground">
       <div className="container py-12 px-4 md:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
