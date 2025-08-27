@@ -138,7 +138,7 @@ export default function ContactPage() {
             <div className="aspect-video w-full">
                 <iframe
                     className="w-full h-full rounded-lg"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086209873086!2d-122.42172838468165!3d37.77852397975855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4d5b%3A0x4a501367f076adff!2sSan%20Francisco%20City%20Hall!5e0!3m2!1sen!2sus!4v1620330089552!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14473.432092928526!2d67.02611384000434!3d24.92002353787263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f7d6e6a1a1f%3A0x3c2d4f8f7c9e0e5b!2sBlock%20L%20North%20Nazimabad%20Town%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh!5e0!3m2!1sen!2s!4v1722359239854!5m2!1sen!2s"
                     loading="lazy"
                     title="Google Maps Location"
                 ></iframe>
