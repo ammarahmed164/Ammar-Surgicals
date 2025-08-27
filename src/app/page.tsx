@@ -155,7 +155,7 @@ export default function Home() {
                     >
                         <div className="absolute -top-8 -left-8 w-full h-full bg-primary/10 rounded-3xl transform -rotate-6 z-0"></div>
                         <Image
-                            src="https://picsum.photos/seed/about/600/400"
+                            src="/about2.png"
                             alt="AmmarSurgicals Team"
                             data-ai-hint="diverse medical team"
                             width={600}
