@@ -112,7 +112,7 @@ export default function CartPage() {
                 </CardContent>
                 <CardFooter>
                   <Button asChild className="w-full" size="lg">
-                    <Link href="/checkout">Proceed to Checkout</Link>
+                    <Link href="/payment">Proceed to Payment</Link>
                   </Button>
                 </CardFooter>
              </Card>
