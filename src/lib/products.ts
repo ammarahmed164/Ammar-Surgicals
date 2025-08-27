@@ -7,9 +7,9 @@ const products: Product[] = [
     name: 'Precision Scalpel Series',
     description: 'An ultra-sharp, single-use scalpel designed for maximum precision and control in delicate surgical procedures. The ergonomic handle ensures a comfortable and secure grip.',
     images: [
-      'https://picsum.photos/seed/prod_001_1/800/800',
-      'https://picsum.photos/seed/prod_001_2/800/800',
-      'https://picsum.photos/seed/prod_001_3/800/800',
+      'https://picsum.photos/seed/scalpel1/800/800',
+      'https://picsum.photos/seed/scalpel2/800/800',
+      'https://picsum.photos/seed/scalpel3/800/800',
     ],
     price: 15.99,
     specifications: {
@@ -26,8 +26,8 @@ const products: Product[] = [
     name: 'Hemostatic Forceps',
     description: 'Locking hemostatic forceps (Kelly forceps) for clamping blood vessels and tissue. Features a durable ratchet mechanism for secure closure.',
     images: [
-      'https://picsum.photos/seed/prod_002_1/800/800',
-      'https://picsum.photos/seed/prod_002_2/800/800',
+      'https://picsum.photos/seed/forceps1/800/800',
+      'https://picsum.photos/seed/forceps2/800/800',
     ],
     price: 45.50,
     specifications: {
@@ -44,9 +44,9 @@ const products: Product[] = [
     name: 'Surgical Scissors Kit',
     description: 'A versatile kit including Mayo, Metzenbaum, and Iris scissors for various dissecting needs. Sharp-blunt tips for safe and effective cutting.',
     images: [
-      'https://picsum.photos/seed/prod_003_1/800/800',
-      'https://picsum.photos/seed/prod_003_2/800/800',
-      'https://picsum.photos/seed/prod_003_3/800/800',
+      'https://picsum.photos/seed/scissors1/800/800',
+      'https://picsum.photos/seed/scissors2/800/800',
+      'https://picsum.photos/seed/scissors3/800/800',
     ],
     price: 120.00,
     specifications: {
@@ -63,8 +63,8 @@ const products: Product[] = [
     name: 'Advanced Retractor System',
     description: 'Self-retaining retractor system for providing clear visibility of the surgical field. Includes multiple blade sizes for versatility across procedures.',
     images: [
-      'https://picsum.photos/seed/prod_004_1/800/800',
-      'https://picsum.photos/seed/prod_004_2/800/800',
+      'https://picsum.photos/seed/retractor1/800/800',
+      'https://picsum.photos/seed/retractor2/800/800',
     ],
     price: 890.00,
     specifications: {
@@ -81,8 +81,8 @@ const products: Product[] = [
     name: 'Suture Needles Pack (12-pack)',
     description: 'High-quality, sharp suture needles for smooth passage through tissue. Assorted pack includes various curvatures and point types for all suturing needs.',
     images: [
-      'https://picsum.photos/seed/prod_005_1/800/800',
-      'https://picsum.photos/seed/prod_005_2/800/800',
+      'https://picsum.photos/seed/suture1/800/800',
+      'https://picsum.photos/seed/suture2/800/800',
     ],
     price: 89.99,
     specifications: {
@@ -99,9 +99,9 @@ const products: Product[] = [
     name: 'Orthopedic Bone Drill',
     description: 'A powerful and reliable cordless bone drill for orthopedic procedures. Features variable speed control and quick-release chuck for fast bit changes.',
     images: [
-      'https://picsum.photos/seed/prod_006_1/800/800',
-      'https://picsum.photos/seed/prod_006_2/800/800',
-      'https://picsum.photos/seed/prod_006_3/800/800',
+      'https://picsum.photos/seed/drill1/800/800',
+      'https://picsum.photos/seed/drill2/800/800',
+      'https://picsum.photos/seed/drill3/800/800',
     ],
     price: 2500.00,
     specifications: {
@@ -118,8 +118,8 @@ const products: Product[] = [
     name: 'Laparoscopic Trocar Set',
     description: 'A complete set of bladeless trocars for minimally invasive surgery. Designed to reduce fascial trauma and ensure a secure seal.',
     images: [
-      'https://picsum.photos/seed/prod_007_1/800/800',
-      'https://picsum.photos/seed/prod_007_2/800/800',
+      'https://picsum.photos/seed/trocar1/800/800',
+      'https://picsum.photos/seed/trocar2/800/800',
     ],
     price: 450.00,
     specifications: {
@@ -136,8 +136,8 @@ const products: Product[] = [
     name: 'Microscope',
     description: 'High-power surgical microscope for microsurgery. Provides excellent depth perception, illumination, and magnification.',
     images: [
-      'https://picsum.photos/seed/prod_008_1/800/800',
-      'https://picsum.photos/seed/prod_008_2/800/800',
+      'https://picsum.photos/seed/microscope1/800/800',
+      'https://picsum.photos/seed/microscope2/800/800',
     ],
     price: 15000.00,
     specifications: {
