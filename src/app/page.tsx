@@ -25,7 +25,7 @@ export default function Home() {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-black/50" />
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -33,8 +33,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="relative z-10 px-4 md:px-6 text-white"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight drop-shadow-lg">
-              The Art of <span className="text-primary">Precision</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight drop-shadow-md">
+              The Art of Precision
             </h1>
             <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-6 text-gray-200">
               Empowering Surgeons with Instruments of Unrivaled Quality and
@@ -43,7 +43,7 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="mt-8 bg-white/90 text-primary hover:bg-white hover:scale-105 transition-transform duration-300 rounded-2xl shadow-lg"
+              className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-transform duration-300 rounded-full shadow-lg"
             >
               <Link href="/products">
                 Discover Our Catalog <ArrowRight className="ml-2 h-5 w-5" />
