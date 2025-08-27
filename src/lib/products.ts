@@ -7,9 +7,8 @@ const products: Product[] = [
     name: 'Precision Scalpel Series',
     description: 'An ultra-sharp, single-use scalpel designed for maximum precision and control in delicate surgical procedures. The ergonomic handle ensures a comfortable and secure grip.',
     images: [
-      'https://picsum.photos/seed/surgical_instrument_tray_1/800/800',
-      'https://picsum.photos/seed/surgical_instrument_tray_2/800/800',
-      'https://picsum.photos/seed/surgical_instrument_tray_3/800/800',
+      '/ScalpelSeries.png',
+ 
     ],
     price: 15.99,
     specifications: {
@@ -26,8 +25,7 @@ const products: Product[] = [
     name: 'Hemostatic Forceps',
     description: 'Locking hemostatic forceps (Kelly forceps) for clamping blood vessels and tissue. Features a durable ratchet mechanism for secure closure.',
     images: [
-      'https://picsum.photos/seed/hemostatic_forceps_1/800/800',
-      'https://picsum.photos/seed/hemostatic_forceps_2/800/800',
+      '/Hemostatic.png',
     ],
     price: 45.50,
     specifications: {
@@ -44,9 +42,7 @@ const products: Product[] = [
     name: 'Surgical Scissors Kit',
     description: 'A versatile kit including Mayo, Metzenbaum, and Iris scissors for various dissecting needs. Sharp-blunt tips for safe and effective cutting.',
     images: [
-      'https://picsum.photos/seed/surgical_scissors_1/800/800',
-      'https://picsum.photos/seed/surgical_scissors_2/800/800',
-      'https://picsum.photos/seed/surgical_scissors_3/800/800',
+      '/ScissorKit.png',
     ],
     price: 120.00,
     specifications: {
@@ -63,8 +59,7 @@ const products: Product[] = [
     name: 'Advanced Retractor System',
     description: 'Self-retaining retractor system for providing clear visibility of the surgical field. Includes multiple blade sizes for versatility across procedures.',
     images: [
-      'https://picsum.photos/seed/surgical_retractor_1/800/800',
-      'https://picsum.photos/seed/surgical_retractor_2/800/800',
+      '/Refractor.png',
     ],
     price: 890.00,
     specifications: {
@@ -81,8 +76,7 @@ const products: Product[] = [
     name: 'Suture Needles Pack (12-pack)',
     description: 'High-quality, sharp suture needles for smooth passage through tissue. Assorted pack includes various curvatures and point types for all suturing needs.',
     images: [
-      'https://picsum.photos/seed/suture_needles_1/800/800',
-      'https://picsum.photos/seed/suture_needles_2/800/800',
+      '/Needles.png',
     ],
     price: 89.99,
     specifications: {
@@ -99,9 +93,7 @@ const products: Product[] = [
     name: 'Orthopedic Bone Drill',
     description: 'A powerful and reliable cordless bone drill for orthopedic procedures. Features variable speed control and quick-release chuck for fast bit changes.',
     images: [
-      'https://picsum.photos/seed/orthopedic_drill_1/800/800',
-      'https://picsum.photos/seed/orthopedic_drill_2/800/800',
-      'https://picsum.photos/seed/orthopedic_drill_3/800/800',
+      '/BoneDrill.png',
     ],
     price: 2500.00,
     specifications: {
@@ -118,8 +110,7 @@ const products: Product[] = [
     name: 'Laparoscopic Trocar Set',
     description: 'A complete set of bladeless trocars for minimally invasive surgery. Designed to reduce fascial trauma and ensure a secure seal.',
     images: [
-      'https://picsum.photos/seed/laparoscopic_trocar_1/800/800',
-      'https://picsum.photos/seed/laparoscopic_trocar_2/800/800',
+      '/Laparoscopic.png',
     ],
     price: 450.00,
     specifications: {
@@ -136,8 +127,7 @@ const products: Product[] = [
     name: 'Microscope',
     description: 'High-power surgical microscope for microsurgery. Provides excellent depth perception, illumination, and magnification.',
     images: [
-      'https://picsum.photos/seed/surgical_microscope_1/800/800',
-      'https://picsum.photos/seed/surgical_microscope_2/800/800',
+      '/Microscope.png',
     ],
     price: 15000.00,
     specifications: {

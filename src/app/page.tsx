@@ -15,14 +15,14 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center text-center bg-gray-200">
           <Image
-            src="https://picsum.photos/1920/1080"
+            src="/Home.png"
             alt="Operating room"
             data-ai-hint="operating room"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-primary/70" />
+          <div className="absolute inset-0 bg-primary/40" />
           <div className="relative z-10 container px-4 md:px-6 text-primary-foreground animate-fade-in-up">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
               AmmarSurgicals

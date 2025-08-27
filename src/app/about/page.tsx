@@ -18,7 +18,7 @@ export default function AboutPage() {
         <section className="mt-12 md:mt-20 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <Image
-              src="https://picsum.photos/800/600"
+              src="/About.png"
               alt="AmmarSurgicals Team"
               data-ai-hint="diverse medical professionals"
               width={800}
