@@ -18,12 +18,12 @@ export default function Home() {
         {/* HERO */}
         <section className="relative w-full h-screen flex items-center justify-center text-center">
           <Image
-            src="/Home.png"
+            src="/Home2.png"
             alt="Modern operating room with advanced surgical equipment"
             data-ai-hint="operating room"
             fill
             priority
-            className="object-contain"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
 
