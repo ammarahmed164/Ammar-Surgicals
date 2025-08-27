@@ -23,7 +23,7 @@ export default function Home() {
             data-ai-hint="operating room"
             fill
             priority
-            className="object-cover"
+            className="object-contain"
           />
           <div className="absolute inset-0 bg-black/50" />
 
