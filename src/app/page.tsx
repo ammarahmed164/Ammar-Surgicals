@@ -25,14 +25,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-primary/40" />
           <div className="relative z-10 container px-4 md:px-6 text-primary-foreground animate-fade-in-up">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
-              AmmarSurgicals
+              The Art of Precision
             </h1>
             <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-4">
-              Precision Instruments for Life-Saving Procedures
+              Empowering Surgeons with Instruments of Unrivaled Quality and Innovation.
             </p>
             <Button asChild size="lg" className="mt-8 transition-transform duration-300 hover:scale-105">
               <Link href="/products">
-                Explore Our Products <ArrowRight className="ml-2 h-5 w-5" />
+                Discover Our Catalog <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>
