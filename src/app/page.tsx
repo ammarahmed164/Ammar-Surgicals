@@ -1,8 +1,9 @@
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ShieldCheck, Gem, ThumbsUp, ArrowRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import { getProducts } from "@/lib/products";
@@ -13,112 +14,168 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
+        {/* HERO */}
         <section className="relative w-full h-screen flex items-center justify-center text-center">
           <Image
             src="/Home.png"
             alt="Operating room"
-            data-ai-hint="operating room"
             fill
-            className="object-cover"
             priority
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="relative z-10 px-4 md:px-6 text-white animate-fade-in-up">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline [text-shadow:_0_2px_4px_rgb(0_0_0_/_50%)]">
-              The Art of Precision
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-10 px-4 md:px-6 text-white"
+          >
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight drop-shadow-lg">
+              The Art of <span className="text-primary">Precision</span>
             </h1>
-            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-4 [text-shadow:_0_1px_3px_rgb(0_0_0_/_40%)]">
-              Empowering Surgeons with Instruments of Unrivaled Quality and Innovation.
+            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-6 text-gray-200">
+              Empowering Surgeons with Instruments of Unrivaled Quality and
+              Innovation.
             </p>
-            <Button asChild size="lg" className="mt-8 transition-transform duration-300 hover:scale-105 bg-white/90 text-primary hover:bg-white">
+            <Button
+              asChild
+              size="lg"
+              className="mt-8 bg-white/90 text-primary hover:bg-white hover:scale-105 transition-transform duration-300 rounded-2xl shadow-lg"
+            >
               <Link href="/products">
                 Discover Our Catalog <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </section>
 
-        <section id="featured-products" className="py-12 md:py-24 bg-background">
+        {/* FEATURED PRODUCTS */}
+        <section className="py-20 bg-gradient-to-b from-background via-muted/30 to-background">
           <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl font-headline">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-extrabold text-center font-headline"
+            >
               Featured Products
-            </h2>
-            <p className="mt-4 mb-12 text-center text-muted-foreground md:text-xl">
+            </motion.h2>
+            <p className="mt-4 mb-12 text-center text-muted-foreground md:text-lg">
               Discover our top-selling surgical instruments.
             </p>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            >
               {featuredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <motion.div
+                  key={product.id}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  <ProductCard product={product} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
+
             <div className="text-center mt-12">
-               <Button asChild variant="outline">
+              <Button asChild variant="outline" className="rounded-xl">
                 <Link href="/products">View All Products</Link>
               </Button>
             </div>
           </div>
         </section>
 
-        <section className="py-12 md:py-24 bg-secondary">
-          <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl font-headline">
+        {/* EXCELLENCE SECTION */}
+        <section className="py-20 bg-secondary relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.1),transparent)]" />
+          <div className="container mx-auto px-4 md:px-6 relative">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center font-headline">
               Our Commitment to Excellence
             </h2>
-            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="flex flex-col items-center text-center p-6">
-                <div className="mb-4 rounded-full bg-primary p-4 text-primary-foreground">
-                  <ShieldCheck className="h-10 w-10" />
-                </div>
-                <h3 className="text-xl font-bold font-headline">Uncompromising Quality</h3>
-                <p className="mt-2 text-muted-foreground">
-                  Every instrument is crafted from the finest materials and subjected to rigorous quality control.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6">
-                <div className="mb-4 rounded-full bg-primary p-4 text-primary-foreground">
-                  <Gem className="h-10 w-10" />
-                </div>
-                <h3 className="text-xl font-bold font-headline">Surgical Precision</h3>
-                <p className="mt-2 text-muted-foreground">
-                  Engineered for accuracy and reliability in the most critical moments.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6">
-                <div className="mb-4 rounded-full bg-primary p-4 text-primary-foreground">
-                  <ThumbsUp className="h-10 w-10" />
-                </div>
-                <h3 className="text-xl font-bold font-headline">Trusted by Professionals</h3>
-                <p className="mt-2 text-muted-foreground">
-                  The preferred choice for surgeons and healthcare providers worldwide.
-                </p>
-              </div>
+            <div className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-3">
+              {[
+                {
+                  icon: <ShieldCheck className="h-10 w-10" />,
+                  title: "Uncompromising Quality",
+                  desc: "Every instrument is crafted from the finest materials and subjected to rigorous quality control.",
+                },
+                {
+                  icon: <Gem className="h-10 w-10" />,
+                  title: "Surgical Precision",
+                  desc: "Engineered for accuracy and reliability in the most critical moments.",
+                },
+                {
+                  icon: <ThumbsUp className="h-10 w-10" />,
+                  title: "Trusted by Professionals",
+                  desc: "The preferred choice for surgeons and healthcare providers worldwide.",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.2 }}
+                  className="flex flex-col items-center text-center p-8 rounded-2xl bg-white/10 backdrop-blur-md shadow-lg"
+                >
+                  <div className="mb-4 rounded-full bg-primary p-4 text-primary-foreground">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold font-headline">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-muted-foreground">{item.desc}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-         <section className="py-12 md:py-24 bg-background">
+        {/* ABOUT */}
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-               <Image
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <Image
                 src="https://picsum.photos/600/400"
                 alt="About AmmarSurgicals"
-                data-ai-hint="medical team"
                 width={600}
                 height={400}
-                className="rounded-lg shadow-lg"
+                className="rounded-2xl shadow-xl"
               />
-            </div>
-            <div className="animate-fade-in-right">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-extrabold font-headline">
                 About AmmarSurgicals
               </h2>
-              <p className="mt-4 text-muted-foreground">
-                For over 20 years, AmmarSurgicals has been at the forefront of surgical instrument innovation. Our mission is to empower medical professionals with the highest quality tools, enhancing patient outcomes and advancing the field of surgery. We blend traditional craftsmanship with cutting-edge technology to create instruments that are not only effective but also a natural extension of the surgeon's hand.
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                For over 20 years, AmmarSurgicals has been at the forefront of
+                surgical instrument innovation. Our mission is to empower
+                medical professionals with the highest quality tools, enhancing
+                patient outcomes and advancing the field of surgery. We blend
+                traditional craftsmanship with cutting-edge technology to create
+                instruments that are not only effective but also a natural
+                extension of the surgeon's hand.
               </p>
-              <Button asChild className="mt-6">
+              <Button asChild className="mt-6 rounded-xl">
                 <Link href="/about">Learn More</Link>
               </Button>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>
