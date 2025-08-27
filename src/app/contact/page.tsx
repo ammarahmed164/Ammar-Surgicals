@@ -17,7 +17,9 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { contactUs } from "@/ai/flows/contact-us-flow";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -33,6 +35,7 @@ const formSchema = z.object({
 
 export default function ContactPage() {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,13 +45,32 @@ export default function ContactPage() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We will get back to you shortly.",
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      // This now calls our backend flow
+      const result = await contactUs(values);
+
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for contacting us. We will get back to you shortly.",
+        });
+        form.reset();
+      } else {
+        throw new Error(result.error || "An unknown error occurred");
+      }
+
+    } catch (error) {
+       console.error("Failed to send message:", error);
+       toast({
+        title: "Submission Failed",
+        description: "Could not send your message. Please try again later.",
+        variant: "destructive",
+       });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -109,7 +131,10 @@ export default function ContactPage() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">Send Message</Button>
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                   {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
               </form>
             </Form>
           </CardContent>
