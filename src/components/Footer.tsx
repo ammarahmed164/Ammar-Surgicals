@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-primary to-blue-800 text-primary-foreground">
+    <footer className="bg-primary text-primary-foreground">
       <div className="container py-12 px-4 md:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
@@ -44,7 +44,7 @@ export default function Footer() {
                 <Link href="https://www.instagram.com/ammarahmed2037/" target="_blank" rel="noopener noreferrer"><Instagram className="h-5 w-5" /></Link>
               </Button>
               <Button variant="ghost" size="icon" className="hover:bg-primary-foreground/10" asChild>
-                <Link href="https://www.linkedin.com/in/ammar-ahmed-838656368" target="_blank" rel="noopener noreferrer"><Linkedin className="h-5 w-5" /></Link>
+                <Link href="www.linkedin.com/in/ammar-ahmed-838656368" target="_blank" rel="noopener noreferrer"><Linkedin className="h-5 w-5" /></Link>
               </Button>
             </div>
           </div>

@@ -73,7 +73,6 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
-        'blue-800': '#1e40af', // Added for footer gradient
       },
       borderRadius: {
         lg: 'var(--radius)',
