@@ -31,7 +31,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative z-10 px-4 md:px-6"
+            className="relative z-10"
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight drop-shadow-lg 
                            bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
