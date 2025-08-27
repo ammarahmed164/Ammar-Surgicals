@@ -16,16 +16,8 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* HERO */}
-        <section className="relative w-full h-screen flex items-center justify-center text-center">
-          <Image
-            src="/Home.png"
-            alt="Modern operating room with advanced surgical equipment"
-            data-ai-hint="operating room"
-            fill
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+        <section className="relative w-full h-[60vh] flex items-center justify-center text-center bg-secondary">
+          <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-background/5 to-transparent" />
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -34,17 +26,17 @@ export default function Home() {
             className="relative z-10 px-4 md:px-6"
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight drop-shadow-lg 
-                           bg-gradient-to-r from-slate-100 to-white bg-clip-text text-transparent">
+                           text-primary">
               The Art of Precision
             </h1>
-            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-6 text-gray-200 drop-shadow-md">
+            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-6 text-foreground/80 drop-shadow-md">
               Empowering Surgeons with Instruments of Unrivaled Quality and
               Innovation.
             </p>
             <Button
               asChild
               size="lg"
-              className="mt-8 bg-white text-primary font-bold hover:bg-gray-200 hover:scale-105 transition-transform duration-300 rounded-full shadow-2xl"
+              className="mt-8 hover:scale-105 transition-transform duration-300 rounded-full shadow-lg"
             >
               <Link href="/products">
                 Discover Our Catalog <ArrowRight className="ml-2 h-5 w-5" />
