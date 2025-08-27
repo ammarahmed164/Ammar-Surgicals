@@ -10,6 +10,8 @@ import { useUser } from "@/context/user-context";
 import { AlertTriangle } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
 
 
 // SVG Icons for Payment Methods
@@ -81,6 +83,7 @@ const EasyPaisaIcon = () => (
 export default function PaymentPage() {
   const { cartItems, totalPrice, totalItems } = useCart();
   const { user } = useUser();
+  const [paymentMethod, setPaymentMethod] = useState("card");
 
   if (totalItems === 0) {
     return (
@@ -133,32 +136,7 @@ export default function PaymentPage() {
                     <CardDescription>Choose your preferred payment method.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    {user ? (
-                       <RadioGroup defaultValue="card" className="space-y-4">
-                            <Label htmlFor="card" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
-                                <RadioGroupItem value="card" id="card" className="mt-1" />
-                                <div className="flex-1">
-                                    <p className="font-semibold">Credit / Debit Card</p>
-                                    <p className="text-sm text-muted-foreground">Pay with Visa or UnionPay.</p>
-                                    <div className="flex items-center gap-4 mt-2">
-                                        <VisaIcon />
-                                        <UnionPayIcon />
-                                    </div>
-                                </div>
-                            </Label>
-                             <Label htmlFor="wallet" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
-                                <RadioGroupItem value="wallet" id="wallet" className="mt-1" />
-                                <div className="flex-1">
-                                    <p className="font-semibold">Mobile Wallet</p>
-                                    <p className="text-sm text-muted-foreground">Pay with JazzCash or EasyPaisa.</p>
-                                    <div className="flex items-center gap-4 mt-2">
-                                        <JazzCashIcon />
-                                        <EasyPaisaIcon />
-                                    </div>
-                                </div>
-                            </Label>
-                       </RadioGroup>
-                    ) : (
+                    {!user ? (
                         <div className="text-center py-8">
                              <AlertTriangle className="mx-auto h-12 w-12 text-destructive mb-4" />
                             <h3 className="text-xl font-semibold">Please Log In</h3>
@@ -167,6 +145,72 @@ export default function PaymentPage() {
                                 <Link href="/login">Login to Continue</Link>
                             </Button>
                         </div>
+                    ) : (
+                       <div className="space-y-6">
+                           <RadioGroup 
+                                defaultValue="card" 
+                                className="space-y-4"
+                                value={paymentMethod}
+                                onValueChange={setPaymentMethod}
+                            >
+                                <Label htmlFor="card" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                    <RadioGroupItem value="card" id="card" className="mt-1" />
+                                    <div className="flex-1">
+                                        <p className="font-semibold">Credit / Debit Card</p>
+                                        <p className="text-sm text-muted-foreground">Pay with Visa or UnionPay.</p>
+                                        <div className="flex items-center gap-4 mt-2">
+                                            <VisaIcon />
+                                            <UnionPayIcon />
+                                        </div>
+                                    </div>
+                                </Label>
+                                <Label htmlFor="wallet" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                    <RadioGroupItem value="wallet" id="wallet" className="mt-1" />
+                                    <div className="flex-1">
+                                        <p className="font-semibold">Mobile Wallet</p>
+                                        <p className="text-sm text-muted-foreground">Pay with JazzCash or EasyPaisa.</p>
+                                        <div className="flex items-center gap-4 mt-2">
+                                            <JazzCashIcon />
+                                            <EasyPaisaIcon />
+                                        </div>
+                                    </div>
+                                </Label>
+                           </RadioGroup>
+
+                           <Separator />
+
+                           {paymentMethod === 'card' && (
+                            <div className="space-y-4 animate-fade-in">
+                                <div className="space-y-2">
+                                    <Label htmlFor="cardNumber">Card Number</Label>
+                                    <Input id="cardNumber" placeholder="0000 0000 0000 0000" />
+                                </div>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="expiry">Expiry Date</Label>
+                                        <Input id="expiry" placeholder="MM/YY" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="cvc">CVC</Label>
+                                        <Input id="cvc" placeholder="123" />
+                                    </div>
+                                </div>
+                            </div>
+                           )}
+
+                           {paymentMethod === 'wallet' && (
+                             <div className="space-y-4 animate-fade-in">
+                                <div className="space-y-2">
+                                    <Label htmlFor="walletNumber">Wallet Number</Label>
+                                    <Input id="walletNumber" placeholder="0300 1234567" />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="walletPin">4-Digit PIN</Label>
+                                    <Input id="walletPin" type="password" placeholder="****" />
+                                </div>
+                            </div>
+                           )}
+                       </div>
                     )}
                 </CardContent>
                 <CardFooter>
@@ -182,7 +226,6 @@ export default function PaymentPage() {
                 </CardFooter>
             </Card>
         </div>
-
       </div>
     </div>
   );
