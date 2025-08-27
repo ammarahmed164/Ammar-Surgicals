@@ -10,7 +10,7 @@ import ProductCard from "@/components/ProductCard";
 import { getProducts } from "@/lib/products";
 
 export default function Home() {
-  const featuredProducts = getProducts().slice(0, 3);
+  const featuredProducts = getProducts().slice(0, 4);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -18,7 +18,7 @@ export default function Home() {
         {/* HERO */}
         <section className="relative w-full h-screen flex items-center justify-center text-center">
           <Image
-            src="https://picsum.photos/seed/surgery/1920/1080"
+            src="/Home.png"
             alt="Modern operating room with advanced surgical equipment"
             data-ai-hint="operating room"
             fill
@@ -65,29 +65,32 @@ export default function Home() {
               Featured Products
             </motion.h2>
             <p className="mt-4 mb-12 text-center text-muted-foreground md:text-lg">
-              Discover our top-selling surgical instruments.
+              Discover our top-selling surgical instruments, trusted by professionals worldwide.
             </p>
 
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+              className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
             >
-              {featuredProducts.map((product) => (
+              {featuredProducts.map((product, i) => (
                 <motion.div
                   key={product.id}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 200 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="h-full"
                 >
                   <ProductCard product={product} />
                 </motion.div>
               ))}
             </motion.div>
 
-            <div className="text-center mt-12">
-              <Button asChild variant="outline" className="rounded-xl">
-                <Link href="/products">View All Products</Link>
+            <div className="text-center mt-16">
+              <Button asChild size="lg" variant="outline" className="rounded-xl">
+                <Link href="/products">View All Products <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
           </div>
@@ -140,45 +143,48 @@ export default function Home() {
         </section>
 
         {/* ABOUT */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <Image
-                src="https://picsum.photos/600/400"
-                alt="About AmmarSurgicals"
-                width={600}
-                height={400}
-                className="rounded-2xl shadow-xl"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-extrabold font-headline">
-                About AmmarSurgicals
-              </h2>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                For over 20 years, AmmarSurgicals has been at the forefront of
-                surgical instrument innovation. Our mission is to empower
-                medical professionals with the highest quality tools, enhancing
-                patient outcomes and advancing the field of surgery. We blend
-                traditional craftsmanship with cutting-edge technology to create
-                instruments that are not only effective but also a natural
-                extension of the surgeon's hand.
-              </p>
-              <Button asChild className="mt-6 rounded-xl">
-                <Link href="/about">Learn More</Link>
-              </Button>
-            </motion.div>
-          </div>
+        <section className="py-20 bg-background overflow-hidden">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <motion.div 
+                        className="relative"
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="absolute -top-8 -left-8 w-full h-full bg-primary/10 rounded-3xl transform -rotate-6 z-0"></div>
+                        <Image
+                            src="https://picsum.photos/seed/about/600/400"
+                            alt="AmmarSurgicals Team"
+                            data-ai-hint="diverse medical team"
+                            width={600}
+                            height={400}
+                            className="rounded-2xl shadow-xl relative z-10"
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="prose prose-lg max-w-none text-muted-foreground"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-extrabold font-headline text-foreground">
+                            Pioneering Surgical Excellence
+                        </h2>
+                        <p className="mt-4 leading-relaxed">
+                          For over two decades, AmmarSurgicals has been at the forefront of surgical instrument innovation. Our mission is to empower medical professionals with the highest quality tools, enhancing patient outcomes and advancing the field of surgery.
+                        </p>
+                        <p className="mt-4 leading-relaxed">
+                          We blend traditional craftsmanship with cutting-edge technology to create instruments that are not only effective but also a natural extension of the surgeon's hand.
+                        </p>
+                        <Button asChild className="mt-6 rounded-xl" size="lg">
+                            <Link href="/about">Learn Our Story</Link>
+                        </Button>
+                    </motion.div>
+                </div>
+            </div>
         </section>
       </main>
     </div>
