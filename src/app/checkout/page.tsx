@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/cart-context";
 import { CheckCircle, ShoppingBag } from "lucide-react";
@@ -13,25 +13,25 @@ export default function CheckoutPage() {
   const { clearCart, cartItems } = useCart();
   const router = useRouter();
   
-  // Make a copy of cartItems before it's cleared to display on this page.
-  const finalCartItems = [...cartItems];
+  // Create a stable copy of cartItems at the time of initial render.
+  const finalCartItems = useMemo(() => [...cartItems], []);
 
   useEffect(() => {
     // Only clear the cart if there were items in it when the page loaded.
+    // And only do it once.
     if (finalCartItems.length > 0) {
       clearCart();
     } else {
-      // If the cart was already empty, redirect to the homepage.
+      // If the cart was already empty when navigating here, redirect to the homepage.
       // This prevents direct access to the thank you page.
       router.push('/');
     }
-    
-    // The empty dependency array `[]` ensures this effect runs only once.
+    // The empty dependency array `[]` ensures this effect runs only once after mount.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // If the user somehow navigated here with an empty cart,
-  // render nothing while we redirect them.
+  // If the user navigated here with an empty cart, they will be redirected.
+  // Render nothing while the redirect happens.
   if (finalCartItems.length === 0) {
       return null;
   }
