@@ -8,6 +8,9 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription }
 import { Separator } from "@/components/ui/separator";
 import { useUser } from "@/context/user-context";
 import { AlertTriangle } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label";
+
 
 // SVG Icons for Payment Methods
 const VisaIcon = () => (
@@ -35,7 +38,7 @@ const UnionPayIcon = () => (
     <stop stopColor="#E01E26"/>
     <stop offset=".24" stopColor="#E01E26"/>
     <stop offset=".53" stopColor="#E01E26"/>
-    <stop offset=".78" stopColor="#E01E2れていないため、"/>
+    <stop offset=".78" stopColor="#E01E26"/>
     <stop offset="1" stopColor="#E01E26"/>
     </linearGradient>
     <linearGradient id="paint1_linear_105_2" x1="419.6" x2="580.4" y1="512.8" y2="512.8" gradientUnits="userSpaceOnUse">
@@ -69,7 +72,7 @@ const JazzCashIcon = () => (
 );
 
 const EasyPaisaIcon = () => (
-  <svg xmlns="http://www.w3org/2000/svg" width="48" height="48" viewBox="0 0 128 128" fill="none">
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 128 128" fill="none">
     <circle cx="64" cy="64" r="64" fill="#00B24D"/>
     <path d="M40 40H88V52H52V64H84V76H52V88H88V100H40V40Z" fill="white"/>
   </svg>
@@ -127,29 +130,34 @@ export default function PaymentPage() {
             <Card>
                 <CardHeader>
                     <CardTitle>Payment Details</CardTitle>
-                    <CardDescription>Choose your payment method.</CardDescription>
+                    <CardDescription>Choose your preferred payment method.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     {user ? (
-                        <div className="space-y-6">
-                            <div className="space-y-2">
-                                <p className="text-sm font-medium text-muted-foreground">Credit & Debit Cards</p>
-                                <div className="flex items-center gap-4 p-4 border rounded-md">
-                                    <VisaIcon />
-                                    <UnionPayIcon />
+                       <RadioGroup defaultValue="card" className="space-y-4">
+                            <Label htmlFor="card" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                <RadioGroupItem value="card" id="card" className="mt-1" />
+                                <div className="flex-1">
+                                    <p className="font-semibold">Credit / Debit Card</p>
+                                    <p className="text-sm text-muted-foreground">Pay with Visa or UnionPay.</p>
+                                    <div className="flex items-center gap-4 mt-2">
+                                        <VisaIcon />
+                                        <UnionPayIcon />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="space-y-2">
-                                <p className="text-sm font-medium text-muted-foreground">Mobile Wallets</p>
-                                <div className="flex items-center gap-4 p-4 border rounded-md">
-                                     <JazzCashIcon />
-                                     <EasyPaisaIcon />
+                            </Label>
+                             <Label htmlFor="wallet" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                <RadioGroupItem value="wallet" id="wallet" className="mt-1" />
+                                <div className="flex-1">
+                                    <p className="font-semibold">Mobile Wallet</p>
+                                    <p className="text-sm text-muted-foreground">Pay with JazzCash or EasyPaisa.</p>
+                                    <div className="flex items-center gap-4 mt-2">
+                                        <JazzCashIcon />
+                                        <EasyPaisaIcon />
+                                    </div>
                                 </div>
-                            </div>
-                             <p className="text-xs text-center text-muted-foreground pt-4">
-                                This is a visual placeholder. No real payment will be processed.
-                            </p>
-                        </div>
+                            </Label>
+                       </RadioGroup>
                     ) : (
                         <div className="text-center py-8">
                              <AlertTriangle className="mx-auto h-12 w-12 text-destructive mb-4" />
@@ -179,5 +187,3 @@ export default function PaymentPage() {
     </div>
   );
 }
-
-    
