@@ -16,8 +16,16 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* HERO */}
-        <section className="relative w-full h-[60vh] flex items-center justify-center text-center bg-secondary">
-          <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-background/5 to-transparent" />
+        <section className="relative w-full h-[60vh] flex items-center justify-center text-center">
+           <Image
+              src="/Home2.png"
+              alt="Surgical instruments on a tray"
+              data-ai-hint="surgical instruments tray"
+              fill
+              priority
+              className="object-cover"
+            />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -26,10 +34,10 @@ export default function Home() {
             className="relative z-10 px-4 md:px-6"
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-headline leading-tight drop-shadow-lg 
-                           text-primary">
+                           bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
               The Art of Precision
             </h1>
-            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-6 text-foreground/80 drop-shadow-md">
+            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-6 text-neutral-200 drop-shadow-md">
               Empowering Surgeons with Instruments of Unrivaled Quality and
               Innovation.
             </p>
