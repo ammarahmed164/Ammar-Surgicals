@@ -88,3 +88,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.dark .bg-gradient-to-t.from-gray-100.to-white {
+    --tw-gradient-from: #1f2937;
+    --tw-gradient-to: #111827;
+}
+
