@@ -14,21 +14,29 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-
+import { useUser } from "@/context/user-context";
+import { useEffect } from "react";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email." }),
   password: z.string().min(1, { message: "Password is required." }),
 });
 
-
 export default function LoginPage() {
   const { toast } = useToast();
   const router = useRouter();
+  const { user, login } = useUser();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,14 +45,33 @@ export default function LoginPage() {
     },
   });
 
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, [user, router]);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    toast({
-      title: "Login Successful",
-      description: "Welcome back!",
-    });
-    form.reset();
-    router.push('/');
+
+    // In a real app, you'd fetch the user from a database.
+    // For this prototype, we'll retrieve the stored name from localStorage.
+    const storedFirstName = localStorage.getItem('user_firstname');
+
+    if (storedFirstName) {
+      login(storedFirstName);
+      toast({
+        title: "Login Successful",
+        description: `Welcome back, ${storedFirstName}!`,
+      });
+      router.push("/");
+    } else {
+       toast({
+        title: "Login Failed",
+        description: "No user found. Please sign up first.",
+        variant: "destructive"
+      });
+    }
   }
 
   return (
@@ -66,11 +93,7 @@ export default function LoginPage() {
                   <FormItem className="grid gap-2">
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="m@example.com"
-                        {...field}
-                      />
+                      <Input type="email" placeholder="m@example.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -81,9 +104,12 @@ export default function LoginPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
-                     <div className="flex items-center">
+                    <div className="flex items-center">
                       <FormLabel>Password</FormLabel>
-                      <Link href="#" className="ml-auto inline-block text-sm underline">
+                      <Link
+                        href="#"
+                        className="ml-auto inline-block text-sm underline"
+                      >
                         Forgot your password?
                       </Link>
                     </div>

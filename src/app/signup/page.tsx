@@ -25,12 +25,13 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
-
 const formSchema = z.object({
   firstName: z.string().min(1, { message: "First name is required." }),
   lastName: z.string().min(1, { message: "Last name is required." }),
   email: z.string().email({ message: "Please enter a valid email." }),
-  password: z.string().min(8, { message: "Password must be at least 8 characters." }),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters." }),
 });
 
 export default function SignupPage() {
@@ -48,12 +49,18 @@ export default function SignupPage() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    // Simulate storing the user's first name for the prototype
+    if (typeof window !== "undefined") {
+      localStorage.setItem("user_firstname", values.firstName);
+    }
+    
     toast({
       title: "Account Created!",
       description: "Redirecting to login...",
     });
+
     form.reset();
-    router.push('/login');
+    router.push("/login");
   }
 
   return (
@@ -69,32 +76,32 @@ export default function SignupPage() {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
               <div className="grid grid-cols-2 gap-4">
-                 <FormField
-                    control={form.control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <FormItem className="grid gap-2">
-                        <FormLabel>First name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Max" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="lastName"
-                    render={({ field }) => (
-                      <FormItem className="grid gap-2">
-                        <FormLabel>Last name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Robinson" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem className="grid gap-2">
+                      <FormLabel>First name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Max" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem className="grid gap-2">
+                      <FormLabel>Last name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Robinson" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
               <FormField
                 control={form.control}
