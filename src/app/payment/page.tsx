@@ -83,7 +83,7 @@ const EasyPaisaIcon = () => (
 export default function PaymentPage() {
   const { cartItems, totalPrice, totalItems } = useCart();
   const { user } = useUser();
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [paymentMethod, setPaymentMethod] = useState("visa");
 
   if (totalItems === 0) {
     return (
@@ -96,6 +96,9 @@ export default function PaymentPage() {
         </div>
     );
   }
+
+  const showCardForm = paymentMethod === 'visa' || paymentMethod === 'unionpay';
+  const showWalletForm = paymentMethod === 'jazzcash' || paymentMethod === 'easypaisa';
 
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 md:py-16">
@@ -148,39 +151,38 @@ export default function PaymentPage() {
                     ) : (
                        <div className="space-y-6">
                            <RadioGroup 
-                                defaultValue="card" 
-                                className="space-y-4"
+                                defaultValue="visa" 
+                                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                                 value={paymentMethod}
                                 onValueChange={setPaymentMethod}
                             >
-                                <Label htmlFor="card" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
-                                    <RadioGroupItem value="card" id="card" className="mt-1" />
-                                    <div className="flex-1">
-                                        <p className="font-semibold">Credit / Debit Card</p>
-                                        <p className="text-sm text-muted-foreground">Pay with Visa or UnionPay.</p>
-                                        <div className="flex items-center gap-4 mt-2">
-                                            <VisaIcon />
-                                            <UnionPayIcon />
-                                        </div>
-                                    </div>
+                                <Label htmlFor="visa" className="flex items-center gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                    <RadioGroupItem value="visa" id="visa" />
+                                    <VisaIcon />
+                                    <span className="font-semibold">Visa</span>
                                 </Label>
-                                <Label htmlFor="wallet" className="flex items-start gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
-                                    <RadioGroupItem value="wallet" id="wallet" className="mt-1" />
-                                    <div className="flex-1">
-                                        <p className="font-semibold">Mobile Wallet</p>
-                                        <p className="text-sm text-muted-foreground">Pay with JazzCash or EasyPaisa.</p>
-                                        <div className="flex items-center gap-4 mt-2">
-                                            <JazzCashIcon />
-                                            <EasyPaisaIcon />
-                                        </div>
-                                    </div>
+                                <Label htmlFor="unionpay" className="flex items-center gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                    <RadioGroupItem value="unionpay" id="unionpay" />
+                                    <UnionPayIcon />
+                                    <span className="font-semibold">UnionPay</span>
+                                </Label>
+                                <Label htmlFor="jazzcash" className="flex items-center gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                    <RadioGroupItem value="jazzcash" id="jazzcash" />
+                                    <JazzCashIcon />
+                                    <span className="font-semibold">JazzCash</span>
+                                </Label>
+                                <Label htmlFor="easypaisa" className="flex items-center gap-4 border rounded-md p-4 cursor-pointer hover:bg-accent has-[[data-state=checked]]:border-primary">
+                                    <RadioGroupItem value="easypaisa" id="easypaisa" />
+                                    <EasyPaisaIcon />
+                                    <span className="font-semibold">EasyPaisa</span>
                                 </Label>
                            </RadioGroup>
 
                            <Separator />
 
-                           {paymentMethod === 'card' && (
+                           {showCardForm && (
                             <div className="space-y-4 animate-fade-in">
+                                <p className="font-medium">Enter Card Details</p>
                                 <div className="space-y-2">
                                     <Label htmlFor="cardNumber">Card Number</Label>
                                     <Input id="cardNumber" placeholder="0000 0000 0000 0000" />
@@ -198,8 +200,9 @@ export default function PaymentPage() {
                             </div>
                            )}
 
-                           {paymentMethod === 'wallet' && (
+                           {showWalletForm && (
                              <div className="space-y-4 animate-fade-in">
+                                <p className="font-medium">Enter Wallet Details</p>
                                 <div className="space-y-2">
                                     <Label htmlFor="walletNumber">Wallet Number</Label>
                                     <Input id="walletNumber" placeholder="0300 1234567" />
