@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center text-center bg-gray-200">
+        <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center text-center">
           <Image
             src="/Home.png"
             alt="Operating room"
@@ -22,12 +22,12 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-transparent" />
           <div className="relative z-10 container px-4 md:px-6 text-primary-foreground animate-fade-in-up">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline [text-shadow:_0_2px_4px_rgb(0_0_0_/_40%)]">
               The Art of Precision
             </h1>
-            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-4">
+            <p className="max-w-[700px] mx-auto text-lg md:text-xl mt-4 [text-shadow:_0_1px_3px_rgb(0_0_0_/_30%)]">
               Empowering Surgeons with Instruments of Unrivaled Quality and Innovation.
             </p>
             <Button asChild size="lg" className="mt-8 transition-transform duration-300 hover:scale-105">
