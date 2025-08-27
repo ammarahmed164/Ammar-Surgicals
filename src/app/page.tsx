@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center text-center">
+        <section className="relative w-full h-screen flex items-center justify-center text-center">
           <Image
             src="/Home.png"
             alt="Operating room"
