@@ -139,6 +139,108 @@ const products: Product[] = [
     category: 'Viewing Instruments',
     aiHint: 'surgical microscope',
   },
+  {
+    id: 'prod_009',
+    name: 'Adson Tissue Forceps',
+    description: 'Fine-tipped forceps for grasping delicate tissues. The 1x2 teeth design provides a secure grip with minimal tissue trauma.',
+    images: [
+      '/AdsonForceps.png',
+    ],
+    price: 35.00,
+    specifications: {
+      'Material': 'German Stainless Steel',
+      'Length': '4.75 inches',
+      'Tip': '1x2 Teeth, Straight',
+      'Autoclavable': 'Yes',
+    },
+    category: 'Grasping & Holding',
+    aiHint: 'tissue forceps',
+  },
+  {
+    id: 'prod_010',
+    name: 'Mayo-Hegar Needle Holder',
+    description: 'A heavy-pattern needle holder with a secure ratchet lock. The tungsten carbide jaws provide a durable, non-slip grip on needles.',
+    images: [
+      '/NeedleHolder.png',
+    ],
+    price: 95.00,
+    specifications: {
+      'Material': 'Stainless Steel with TC Jaws',
+      'Length': '6 inches',
+      'Jaw Type': 'Serrated, Straight',
+      'Application': 'General Surgery',
+    },
+    category: 'Suturing & Stapling',
+    aiHint: 'needle holder',
+  },
+  {
+    id: 'prod_011',
+    name: 'Yankauer Suction Tube',
+    description: 'Standard suction instrument for clearing surgical sites of fluids. The bulbous tip is designed to minimize tissue damage.',
+    images: [
+      '/YankauerTube.png',
+    ],
+    price: 25.00,
+    specifications: {
+      'Material': 'Medical-grade Polymer',
+      'Tip': 'Standard Bulbous Tip',
+      'Sterility': 'Sterile, Single-Use',
+      'Connection': 'Universal Tubing Connector',
+    },
+    category: 'Suction & Irrigation',
+    aiHint: 'suction tube',
+  },
+  {
+    id: 'prod_012',
+    name: 'Electrosurgical Unit (ESU)',
+    description: 'Advanced ESU for cutting, coagulating, and desiccating tissue with high-frequency electrical currents. Features multiple modes for procedural flexibility.',
+    images: [
+      '/ESU.png',
+    ],
+    price: 7500.00,
+    specifications: {
+      'Output': 'Up to 300 Watts',
+      'Modes': 'Cut, Coag, Bipolar',
+      'Display': 'Digital LED',
+      'Safety': 'Patient Return Electrode Monitoring',
+    },
+    category: 'Powered Instruments',
+    aiHint: 'electrosurgical unit',
+  },
+  {
+    id: 'prod_013',
+    name: 'LED Surgical Headlight',
+    description: 'Bright, shadowless LED headlight for superior illumination of the surgical field. Lightweight design with an adjustable headband for comfort.',
+    images: [
+      '/SurgicalHeadlight.png',
+    ],
+    price: 1200.00,
+    specifications: {
+      'Light Intensity': '100,000 Lux',
+      'Color Temperature': '6000K (Cool White)',
+      'Battery Life': 'Up to 8 hours',
+      'Weight': '250g',
+    },
+    category: 'Viewing Instruments',
+    aiHint: 'surgical headlight',
+  },
+  {
+    id: 'prod_014',
+    name: 'Skin Stapler & Remover Kit',
+    description: 'A convenient kit containing a sterile, single-use skin stapler and a stainless steel staple remover. For rapid wound closure.',
+    images: [
+      '/SkinStapler.png',
+    ],
+    price: 150.00,
+    specifications: {
+      'Stapler': '35 Wide Staples',
+      'Remover': 'Stainless Steel, Autoclavable',
+      'Includes': '1 Stapler, 1 Remover',
+      'Application': 'Wound Closure',
+    },
+    category: 'Suturing & Stapling',
+    aiHint: 'skin stapler',
+  },
 ];
 
 export function getProducts() {
