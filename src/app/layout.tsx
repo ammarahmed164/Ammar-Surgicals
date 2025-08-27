@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 import { UserProvider } from "@/context/user-context";
 import { CartProvider } from "@/context/cart-context";
+import LoginPromptDialog from "@/components/LoginPromptDialog";
 
 const ptSans = PT_Sans({
   subsets: ["latin"],
@@ -57,6 +58,7 @@ export default function RootLayout({
               <Footer />
             </div>
             <Toaster />
+            <LoginPromptDialog />
           </CartProvider>
         </UserProvider>
       </body>

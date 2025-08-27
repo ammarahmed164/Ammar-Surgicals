@@ -6,9 +6,12 @@ import { useCart } from "@/context/cart-context";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { useUser } from "@/context/user-context";
+import { AlertTriangle } from "lucide-react";
 
 export default function PaymentPage() {
   const { cartItems, totalPrice, totalItems } = useCart();
+  const { user } = useUser();
 
   if (totalItems === 0) {
     return (
@@ -61,20 +64,36 @@ export default function PaymentPage() {
                     <CardDescription>Enter your payment information below.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="space-y-4">
-                        <div className="h-14 w-full rounded-md border border-input bg-background/50 flex items-center justify-center">
-                            <p className="text-sm text-muted-foreground">Payment Provider UI (e.g., Stripe) goes here</p>
+                    {user ? (
+                        <div className="space-y-4">
+                            <div className="h-14 w-full rounded-md border border-input bg-background/50 flex items-center justify-center">
+                                <p className="text-sm text-muted-foreground">Payment Provider UI (e.g., Stripe) goes here</p>
+                            </div>
+                             <p className="text-xs text-center text-muted-foreground">
+                                This is a placeholder. No real payment will be processed.
+                            </p>
                         </div>
-                         <p className="text-xs text-center text-muted-foreground">
-                            This is a placeholder. No real payment will be processed.
-                        </p>
-                    </div>
+                    ) : (
+                        <div className="text-center py-8">
+                             <AlertTriangle className="mx-auto h-12 w-12 text-destructive mb-4" />
+                            <h3 className="text-xl font-semibold">Please Log In</h3>
+                            <p className="text-muted-foreground mt-2 mb-6">You need to be logged in to proceed with the payment.</p>
+                            <Button asChild>
+                                <Link href="/login">Login to Continue</Link>
+                            </Button>
+                        </div>
+                    )}
                 </CardContent>
                 <CardFooter>
-                    {/* This button simulates a successful payment and redirects to the final checkout page */}
-                    <Button asChild className="w-full" size="lg">
-                        <Link href="/checkout">Pay ${totalPrice.toFixed(2)}</Link>
-                    </Button>
+                    {user ? (
+                        <Button asChild className="w-full" size="lg">
+                            <Link href="/checkout">Pay ${totalPrice.toFixed(2)}</Link>
+                        </Button>
+                    ) : (
+                        <Button className="w-full" size="lg" disabled>
+                           Pay ${totalPrice.toFixed(2)}
+                        </Button>
+                    )}
                 </CardFooter>
             </Card>
         </div>
