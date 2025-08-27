@@ -38,13 +38,13 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" asChild>
-                <Link href="#"><Github className="h-5 w-5" /></Link>
+                <Link href="https://github.com/ammarahmed164" target="_blank" rel="noopener noreferrer"><Github className="h-5 w-5" /></Link>
               </Button>
                <Button variant="ghost" size="icon" asChild>
-                <Link href="#"><Instagram className="h-5 w-5" /></Link>
+                <Link href="https://www.instagram.com/ammarahmed2037/" target="_blank" rel="noopener noreferrer"><Instagram className="h-5 w-5" /></Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <Link href="#"><Linkedin className="h-5 w-5" /></Link>
+                <Link href="https://www.linkedin.com/in/ammar-ahmed-838656368" target="_blank" rel="noopener noreferrer"><Linkedin className="h-5 w-5" /></Link>
               </Button>
             </div>
           </div>
