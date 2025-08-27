@@ -123,15 +123,15 @@ export default function ContactPage() {
                 <CardContent className="space-y-4">
                     <div className="flex items-center gap-4">
                         <Mail className="h-6 w-6 text-primary" />
-                        <a href="mailto:support@ammarsurgicals.com" className="hover:underline">support@ammarsurgicals.com</a>
+                        <a href="mailto:ammarahmeddd164@gmail.com" className="hover:underline">ammarahmeddd164@gmail.com</a>
                     </div>
                     <div className="flex items-center gap-4">
                         <Phone className="h-6 w-6 text-primary" />
-                        <span>+1 (800) 555-0199</span>
+                        <span>+92 319 3895181</span>
                     </div>
                      <div className="flex items-center gap-4">
                         <MapPin className="h-6 w-6 text-primary" />
-                        <span>123 Medical Plaza, Suite 456, Healthville, USA</span>
+                        <span>Block "L" North Nazimabad, Karachi</span>
                     </div>
                 </CardContent>
             </Card>
