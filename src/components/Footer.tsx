@@ -2,12 +2,13 @@
 import Link from "next/link";
 import { Stethoscope, Linkedin, Github, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 border-t">
-      <div className="container mx-auto px-4 py-12 md:px-6">
-        <div className="grid gap-8 text-center md:text-left md:grid-cols-12">
+    <footer className="bg-gradient-to-t from-gray-100 to-white dark:from-gray-800 border-t">
+      <div className="container mx-auto px-4 py-8 md:px-6">
+        <div className="grid gap-8 text-center md:text-left md:grid-cols-12 mb-8">
           
           <div className="md:col-span-4 flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -17,12 +18,9 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground max-w-xs">
               Precision Instruments for Life-Saving Procedures.
             </p>
-             <div className="mt-6 text-sm text-muted-foreground">
-              <p>&copy; {new Date().getFullYear()} AmmarSurgicals. All rights reserved.</p>
-            </div>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 md:col-start-6">
             <h4 className="font-semibold mb-4 text-foreground tracking-wider uppercase text-sm">Quick Links</h4>
             <ul className="space-y-3">
               <li><Link href="/products" className="text-sm text-muted-foreground hover:text-primary transition-colors">Products</Link></li>
@@ -41,7 +39,7 @@ export default function Footer() {
             </ul>
           </div>
           
-          <div className="md:col-span-4 flex flex-col items-center md:items-start">
+          <div className="md:col-span-2 flex flex-col items-center md:items-start">
             <h4 className="font-semibold mb-4 text-foreground tracking-wider uppercase text-sm">Follow Us</h4>
             <div className="flex space-x-3">
               <Link href="https://github.com/ammarahmed164" target="_blank" rel="noopener noreferrer">
@@ -64,6 +62,10 @@ export default function Footer() {
               </Link>
             </div>
           </div>
+        </div>
+        <Separator />
+        <div className="pt-6 text-center text-sm text-muted-foreground">
+          <p>&copy; 2025 AmmarSurgicals. All rights reserved.</p>
         </div>
       </div>
     </footer>
