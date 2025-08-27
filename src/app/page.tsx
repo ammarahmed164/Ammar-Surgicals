@@ -16,7 +16,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* HERO */}
-        <section className="relative w-full h-[60vh] flex items-center justify-center text-center">
+        <section className="relative w-full h-[80vh] flex items-center justify-center text-center">
            <Image
               src="/Home2.png"
               alt="Surgical instruments on a tray"
