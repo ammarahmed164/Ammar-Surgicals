@@ -32,6 +32,8 @@ import { useUser } from "@/context/user-context";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { useCart } from "@/context/cart-context";
 import { Badge } from "./ui/badge";
+import { getProducts } from "@/lib/products";
+import { useToast } from "@/hooks/use-toast";
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
@@ -48,6 +50,8 @@ export default function Header() {
   const router = useRouter();
   const { user, logout } = useUser();
   const { totalItems } = useCart();
+  const { toast } = useToast();
+  const allProducts = getProducts();
 
   const handleSignOut = () => {
     logout();
@@ -55,8 +59,26 @@ export default function Header() {
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && searchTerm.trim() !== '') {
-      router.push(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
+    if (e.key === 'Enter') {
+      const trimmedSearchTerm = searchTerm.trim();
+      if (trimmedSearchTerm === '') return;
+
+      const exactMatch = allProducts.find(p => p.name.toLowerCase() === trimmedSearchTerm.toLowerCase());
+
+      if (exactMatch) {
+        router.push(`/products/${exactMatch.id}`);
+      } else {
+        const partialMatches = allProducts.filter(p => p.name.toLowerCase().includes(trimmedSearchTerm.toLowerCase()));
+        if (partialMatches.length > 0) {
+          router.push(`/products?search=${encodeURIComponent(trimmedSearchTerm)}`);
+        } else {
+          toast({
+            title: "Product Not Found",
+            description: `No products matching "${trimmedSearchTerm}" were found.`,
+            variant: "destructive"
+          });
+        }
+      }
       setSearchTerm('');
     }
   };
