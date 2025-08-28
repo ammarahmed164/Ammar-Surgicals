@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { getProducts } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import { Input } from "@/components/ui/input";
@@ -14,10 +14,14 @@ import {
 } from "@/components/ui/select";
 import { Search } from "lucide-react";
 import type { Product } from "@/types";
+import { useSearchParams } from "next/navigation";
 
 export default function ProductsPage() {
   const allProducts = useMemo(() => getProducts(), []);
-  const [searchTerm, setSearchTerm] = useState("");
+  const searchParams = useSearchParams();
+  const initialSearch = searchParams.get("search") || "";
+
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [category, setCategory] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts);
 
@@ -26,7 +30,7 @@ export default function ProductsPage() {
     return ["all", ...Array.from(cats)];
   }, [allProducts]);
 
-  useMemo(() => {
+  useEffect(() => {
     let products = allProducts;
     if (searchTerm) {
       products = products.filter((p) =>

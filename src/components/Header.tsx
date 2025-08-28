@@ -43,6 +43,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [searchTerm, setSearchTerm] = React.useState('');
   const pathname = usePathname();
   const router = useRouter();
   const { user, logout } = useUser();
@@ -51,6 +52,13 @@ export default function Header() {
   const handleSignOut = () => {
     logout();
     router.push("/");
+  };
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchTerm.trim() !== '') {
+      router.push(`/products?search=${encodeURIComponent(searchTerm.trim())}`);
+      setSearchTerm('');
+    }
   };
 
   return (
@@ -127,6 +135,9 @@ export default function Header() {
               type="search"
               placeholder="Search products..."
               className="pl-8 sm:w-[200px] md:w-[250px]"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleSearch}
             />
           </div>
           <Button asChild variant="ghost" size="icon" className="relative">
