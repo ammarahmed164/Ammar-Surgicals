@@ -12,23 +12,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
 
-// SVG Icons for Payment Methods
-const VisaIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="24" viewBox="0 0 38 24" fill="none" role="img">
-    <path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.3 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.7 0 35 0Z" fill="#3A4276"/>
-    <path d="M35 1C19.5 1 18.5 23 3 23" stroke="white" strokeWidth="2"/>
-    <path d="M28 20L31 5" stroke="white" strokeWidth="2"/>
-  </svg>
-);
-
-const MastercardIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="24" viewBox="0 0 38 24" fill="none" role="img">
-    <circle cx="15" cy="12" r="7" fill="#EB001B"/>
-    <circle cx="23" cy="12" r="7" fill="#F79E1B" fillOpacity="0.8"/>
-  </svg>
-);
-
-
 export default function PaymentPage() {
   const { cartItems, totalPrice, totalItems } = useCart();
   const { user } = useUser();
@@ -98,10 +81,6 @@ export default function PaymentPage() {
                            <div className="flex items-center gap-4">
                                 <CreditCard className="h-6 w-6 text-muted-foreground" />
                                 <span className="font-semibold">Pay with Credit/Debit Card</span>
-                           </div>
-                           <div className="flex items-center gap-2">
-                            <VisaIcon />
-                            <MastercardIcon />
                            </div>
 
                            <Separator />
